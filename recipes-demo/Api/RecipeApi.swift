@@ -26,7 +26,6 @@ struct RecipeApi {
             Utilities.log(message: "Received unsuccessful HTTP response code \(httpResponse.statusCode)")
             throw ApiError.BadStatus(code: httpResponse.statusCode)
         }
-        
         let response = try Utilities.jsonDecoder.decode(RecipesResponse.self, from: data)
         Utilities.log(message: "Received response for \(urlString)\n\(response)")
         

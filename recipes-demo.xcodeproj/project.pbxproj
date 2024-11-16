@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		96C80E3D2CE8FAED00C52DE0 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 96C80E3C2CE8FAED00C52DE0 /* CachedAsyncImage */; };
+		96C80E3F2CE8FB1000C52DE0 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 96C80E3E2CE8FB1000C52DE0 /* CachedAsyncImage */; };
+		96C80E412CE8FB1700C52DE0 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 96C80E402CE8FB1700C52DE0 /* CachedAsyncImage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		96C80DA52CE2D2DF00C52DE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -89,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C80E3D2CE8FAED00C52DE0 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C80E412CE8FB1700C52DE0 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C80E3F2CE8FB1000C52DE0 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +174,7 @@
 			);
 			name = "DEV recipes-demo";
 			packageProductDependencies = (
+				96C80E3C2CE8FAED00C52DE0 /* CachedAsyncImage */,
 			);
 			productName = "recipes-demo";
 			productReference = 96C80D8E2CE2D2DD00C52DE0 /* DEV recipes-demo.app */;
@@ -233,6 +243,7 @@
 			);
 			name = "CERT recipes-demo";
 			packageProductDependencies = (
+				96C80E402CE8FB1700C52DE0 /* CachedAsyncImage */,
 			);
 			productName = "recipes-demo";
 			productReference = 96C80DEF2CE2EC3E00C52DE0 /* CERT recipes-demo.app */;
@@ -255,6 +266,7 @@
 			);
 			name = "recipes-demo";
 			packageProductDependencies = (
+				96C80E3E2CE8FB1000C52DE0 /* CachedAsyncImage */,
 			);
 			productName = "recipes-demo";
 			productReference = 96C80DF82CE2EC4200C52DE0 /* recipes-demo.app */;
@@ -292,6 +304,9 @@
 			);
 			mainGroup = 96C80D852CE2D2DD00C52DE0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				96C80E3B2CE8FAED00C52DE0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 96C80D8F2CE2D2DD00C52DE0 /* Products */;
 			projectDirPath = "";
@@ -910,6 +925,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		96C80E3B2CE8FAED00C52DE0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		96C80E3C2CE8FAED00C52DE0 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96C80E3B2CE8FAED00C52DE0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		96C80E3E2CE8FB1000C52DE0 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96C80E3B2CE8FAED00C52DE0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		96C80E402CE8FB1700C52DE0 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96C80E3B2CE8FAED00C52DE0 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 96C80D862CE2D2DD00C52DE0 /* Project object */;
 }

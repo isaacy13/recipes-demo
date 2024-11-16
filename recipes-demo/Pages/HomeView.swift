@@ -7,15 +7,6 @@ struct HomeView: View {
         ZStack {
             currentView
                 .navigationTitle("Recipe Rush")
-                .toolbar {
-                    ToolbarItemGroup(placement: .primaryAction) {
-                        Picker("", selection: $viewModel.viewType) {
-                            Image(systemName: "list.bullet")
-                            Image(systemName: "square.grid.2x2.fill")
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                }
                 .refreshable {
                     Task { await viewModel.loadRecipes() }
                 }
@@ -27,15 +18,32 @@ struct HomeView: View {
                     .progressViewStyle(.circular)
             }
         }
+        .alert(isPresented: Binding(get: { viewModel.alertError != nil }, set: { if !$0 { viewModel.alertError = nil } })) {
+            if let alertError = viewModel.alertError {
+                Alert(title: Text(alertError.title),
+                      message: Text(alertError.description))
+            }
+            else {
+                Alert(title: Text("An unexpected error has occurred"), message: Text("Please try again"))
+            }
+        }
     }
     
-    @ViewBuilder
     var currentView: some View {
-        switch viewModel.viewType {
-        case .grid:
-            gridView
-        case .list:
-            listView
+        VStack {
+            Picker("", selection: $viewModel.viewType) {
+                Image(systemName: "list.bullet")
+                Image(systemName: "square.grid.2x2.fill")
+            }
+            .pickerStyle(.segmented)
+            .padding([.leading, .trailing])
+            
+            switch viewModel.viewType {
+            case .grid:
+                gridView
+            case .list:
+                listView
+            }
         }
     }
     
@@ -43,7 +51,7 @@ struct HomeView: View {
         List {
             // identify by UUID given by server
             ForEach(viewModel.recipes, id: \.self.uuid) { recipe in
-                Text(recipe.name)
+                RecipeImageView(recipe: recipe, orientation: .horizontal)
             }
         }
     }
@@ -52,7 +60,7 @@ struct HomeView: View {
         Grid {
             // identify by UUID given by server
             ForEach(viewModel.recipes, id: \.self.uuid) { recipe in
-                Text(recipe.name)
+                RecipeImageView(recipe: recipe, orientation: .vertical)
             }
         }
     }

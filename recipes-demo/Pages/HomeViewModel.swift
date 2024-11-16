@@ -33,11 +33,36 @@ class HomeViewModel: ObservableObject {
                 recipeType = .all
             }
             
-//            let recipeResponse = try await RecipeApi.getRecipes(type: recipeType)
-//            DispatchQueue.main.async {
-//                self.recipes = recipeResponse.recipes
-//            }
+            let recipeResponse = try await RecipeApi.getRecipes(type: recipeType)
+            DispatchQueue.main.async {
+                self.recipes = recipeResponse.recipes
+            }
+        } catch let DecodingError.dataCorrupted(context) {
+            let message = context.debugDescription
+            Utilities.log(message: message)
+            DispatchQueue.main.async {
+                self.alertError = ApiError.Unexpected(description: message)
+            }
+        } catch let DecodingError.keyNotFound(key, context) {
+            let message = "Key '\(key)' not found: \(context.debugDescription)"
+            Utilities.log(message: message)
+            DispatchQueue.main.async {
+                self.alertError = ApiError.Unexpected(description: message)
+            }
+        } catch let DecodingError.valueNotFound(value, context) {
+            let message = "Value '\(value)' not found: \(context.debugDescription)"
+            Utilities.log(message: message)
+            DispatchQueue.main.async {
+                self.alertError = ApiError.Unexpected(description: message)
+            }
+        } catch let DecodingError.typeMismatch(type, context)  {
+            let message = "Type '\(type)' mismatch: \(context.debugDescription)"
+            Utilities.log(message: message)
+            DispatchQueue.main.async {
+                self.alertError = ApiError.Unexpected(description: message)
+            }
         } catch {
+            Utilities.log(message: "Error fetching recipes: \(error.localizedDescription)")
             let alertError = error as? AlertError
             DispatchQueue.main.async {
                 self.alertError = alertError ?? ApiError.Unexpected(description: error.localizedDescription)

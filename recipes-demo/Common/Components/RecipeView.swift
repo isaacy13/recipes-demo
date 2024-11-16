@@ -1,10 +1,110 @@
 import SwiftUI
+import CachedAsyncImage
 
 struct RecipeImageView: View {
     let recipe: Recipe
+    let orientation: Axis
     
     var body: some View {
-        Text("123")
+        VStack {
+            if orientation == .vertical {
+                verticalRecipeView
+            } else {
+                horizontalRecipeView
+            }
+        }
+        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(25)
+        .padding()
+    }
+    
+    var verticalRecipeView: some View {
+        VStack {
+            imagePreview
+            title
+            links
+            Text(recipe.photo_large)
+        }
+    }
+    
+    var horizontalRecipeView: some View {
+        VStack {
+            HStack {
+                imagePreview
+                title
+            }
+            VStack {
+                links
+                Text(recipe.photo_large)
+            }
+        }
+    }
+    
+    var title: some View {
+        VStack {
+            Text(recipe.name)
+                .font(.largeTitle)
+                .bold()
+            
+            Text(recipe.cuisine)
+                .font(.title2)
+        }
+    }
+    
+    var imagePreview: some View {
+        VStack {
+            if let smallImage = URL(string: recipe.photo_small) {
+                CachedAsyncImage(url: smallImage,
+                                 urlCache: .imageCache)
+                .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                
+            } else {
+                Image(systemName: "exclamationmark.triangle")
+                    .foregroundStyle(.yellow)
+                Text("Error loading image preview")
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    var links: some View {
+        HStack {
+            if let source_url = recipe.source_url,
+               let url = URL(string: source_url)
+            {
+                Link(destination: url) {
+                    HStack {
+                        Image(systemName: "link")
+                        Text("Source")
+                    }
+                    .font(.callout)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .cornerRadius(15)
+                }
+            }
+            
+            Spacer()
+                .frame(width: 10)
+            
+            if let youtube_url = recipe.youtube_url,
+               let url = URL(string: youtube_url) {
+                Link(destination: url) {
+                    HStack {
+                        Image(systemName: "video")
+                        Text("Video")
+                    }
+                    .font(.callout)
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .cornerRadius(15)
+                }
+            }
+        }
     }
 }
 
@@ -20,7 +120,17 @@ struct RecipeImageView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationStack {
-            RecipeImageView(recipe: recipe)
+            ScrollView {
+                LazyVStack {
+                    RecipeImageView(recipe: recipe, orientation: .vertical)
+                    RecipeImageView(recipe: recipe, orientation: .horizontal)
+                    RecipeImageView(recipe: recipe, orientation: .vertical)
+                    RecipeImageView(recipe: recipe, orientation: .horizontal)
+                    RecipeImageView(recipe: recipe, orientation: .vertical)
+                    RecipeImageView(recipe: recipe, orientation: .horizontal)
+                }
+            }
+            .background(Color(UIColor.secondarySystemBackground))
         }
     }
 }
