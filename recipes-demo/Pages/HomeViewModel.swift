@@ -2,7 +2,6 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var isLoading = false
-    @Published var viewType: ViewType = .list
     @Published var recipes: [Recipe] = []
     @Published var alertError: AlertError?
     

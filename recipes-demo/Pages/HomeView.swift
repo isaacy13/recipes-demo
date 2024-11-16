@@ -4,6 +4,7 @@ import CachedAsyncImage
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     @State var popupRecipe: Recipe?
+    @State var viewType: ViewType = .list
     
     var body: some View {
         ZStack {
@@ -11,7 +12,7 @@ struct HomeView: View {
                 .navigationTitle("Recipe Rush")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    Picker("", selection: $viewModel.viewType) {
+                    Picker("", selection: $viewType) {
                         Image(systemName: "list.bullet")
                         Image(systemName: "square.grid.2x2.fill")
                     }
@@ -59,7 +60,7 @@ struct HomeView: View {
     
     var currentView: some View {
         ScrollView {            
-            switch viewModel.viewType {
+            switch viewType {
             case .grid:
                 gridView
             case .list:
