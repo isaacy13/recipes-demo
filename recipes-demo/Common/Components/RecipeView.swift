@@ -4,6 +4,7 @@ import CachedAsyncImage
 struct RecipeImageView: View {
     let recipe: Recipe
     let orientation: Axis
+    let onImageClick: () -> Void
     
     var body: some View {
         VStack {
@@ -16,15 +17,15 @@ struct RecipeImageView: View {
         .padding()
         .background(Color(UIColor.systemBackground))
         .cornerRadius(25)
-        .padding()
+        .padding([.leading, .trailing], 15)
+        .padding([.top, .bottom], 5)
     }
     
     var verticalRecipeView: some View {
         VStack {
-            imagePreview
             title
+            imagePreview
             links
-            Text(recipe.photo_large)
         }
     }
     
@@ -34,31 +35,53 @@ struct RecipeImageView: View {
                 imagePreview
                 title
             }
-            VStack {
-                links
-                Text(recipe.photo_large)
-            }
+            .padding([.bottom], 10)
+            links
         }
     }
     
     var title: some View {
-        VStack {
-            Text(recipe.name)
-                .font(.largeTitle)
-                .bold()
-            
-            Text(recipe.cuisine)
-                .font(.title2)
+        let name = Text(recipe.name)
+            .font(.title)
+            .bold()
+            .frame(maxWidth: .infinity, alignment: .leading)
+        
+        let cuisine = Text(recipe.cuisine)
+            .font(.title2)
+            .frame(maxWidth: .infinity, alignment: (orientation == .vertical) ? .trailing : .leading)
+        
+        return VStack {
+            if orientation == .vertical {
+                HStack {
+                    name
+                    Spacer()
+                    cuisine
+                }
+            }
+            else {
+                name
+                cuisine
+            }
         }
     }
     
     var imagePreview: some View {
         VStack {
             if let smallImage = URL(string: recipe.photo_small) {
-                CachedAsyncImage(url: smallImage,
-                                 urlCache: .imageCache)
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                Button() {
+                    onImageClick()
+                } label: {
+                    CachedAsyncImage(url: smallImage,
+                                     urlCache: .imageCache) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                }
                 
             } else {
                 Image(systemName: "exclamationmark.triangle")
@@ -122,12 +145,24 @@ struct RecipeImageView_Previews: PreviewProvider {
         NavigationStack {
             ScrollView {
                 LazyVStack {
-                    RecipeImageView(recipe: recipe, orientation: .vertical)
-                    RecipeImageView(recipe: recipe, orientation: .horizontal)
-                    RecipeImageView(recipe: recipe, orientation: .vertical)
-                    RecipeImageView(recipe: recipe, orientation: .horizontal)
-                    RecipeImageView(recipe: recipe, orientation: .vertical)
-                    RecipeImageView(recipe: recipe, orientation: .horizontal)
+                    RecipeImageView(recipe: recipe, orientation: .vertical) {
+                        
+                    }
+                    RecipeImageView(recipe: recipe, orientation: .horizontal) {
+                        
+                    }
+                    RecipeImageView(recipe: recipe, orientation: .vertical) {
+                        
+                    }
+                    RecipeImageView(recipe: recipe, orientation: .horizontal) {
+                        
+                    }
+                    RecipeImageView(recipe: recipe, orientation: .vertical) {
+                        
+                    }
+                    RecipeImageView(recipe: recipe, orientation: .horizontal) {
+                        
+                    }
                 }
             }
             .background(Color(UIColor.secondarySystemBackground))

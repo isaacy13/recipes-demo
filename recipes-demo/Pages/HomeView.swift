@@ -1,12 +1,23 @@
 import SwiftUI
+import CachedAsyncImage
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @State var popupRecipe: Recipe?
     
     var body: some View {
         ZStack {
             currentView
                 .navigationTitle("Recipe Rush")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    Picker("", selection: $viewModel.viewType) {
+                        Image(systemName: "list.bullet")
+                        Image(systemName: "square.grid.2x2.fill")
+                    }
+                    .pickerStyle(.segmented)
+                    .padding([.leading, .trailing])
+                }
                 .refreshable {
                     Task { await viewModel.loadRecipes() }
                 }
@@ -14,10 +25,27 @@ struct HomeView: View {
             if viewModel.isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.black.opacity(0.3))
+                    .background(Color.black.opacity(0.5))
                     .progressViewStyle(.circular)
             }
+            
+            if let recipe = popupRecipe {
+                VStack {
+                    if let largeImage = URL(string: recipe.photo_large) {
+                        InspectableImageView(imageUrl: largeImage)
+                    }
+                    else if let smallImage = URL(string: recipe.photo_small) {
+                        InspectableImageView(imageUrl: smallImage)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.black.opacity(0.7))
+                .onTapGesture {
+                    self.popupRecipe = nil
+                }
+            }
         }
+        .background(Color(UIColor.secondarySystemBackground))
         .alert(isPresented: Binding(get: { viewModel.alertError != nil }, set: { if !$0 { viewModel.alertError = nil } })) {
             if let alertError = viewModel.alertError {
                 Alert(title: Text(alertError.title),
@@ -30,14 +58,7 @@ struct HomeView: View {
     }
     
     var currentView: some View {
-        VStack {
-            Picker("", selection: $viewModel.viewType) {
-                Image(systemName: "list.bullet")
-                Image(systemName: "square.grid.2x2.fill")
-            }
-            .pickerStyle(.segmented)
-            .padding([.leading, .trailing])
-            
+        ScrollView {            
             switch viewModel.viewType {
             case .grid:
                 gridView
@@ -48,10 +69,12 @@ struct HomeView: View {
     }
     
     var listView: some View {
-        List {
+        LazyVStack {
             // identify by UUID given by server
             ForEach(viewModel.recipes, id: \.self.uuid) { recipe in
-                RecipeImageView(recipe: recipe, orientation: .horizontal)
+                RecipeImageView(recipe: recipe, orientation: .horizontal) {
+                    popupRecipe = recipe
+                }
             }
         }
     }
@@ -60,7 +83,9 @@ struct HomeView: View {
         Grid {
             // identify by UUID given by server
             ForEach(viewModel.recipes, id: \.self.uuid) { recipe in
-                RecipeImageView(recipe: recipe, orientation: .vertical)
+                RecipeImageView(recipe: recipe, orientation: .vertical) {
+                    popupRecipe = recipe
+                }
             }
         }
     }
