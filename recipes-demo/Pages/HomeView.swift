@@ -14,7 +14,9 @@ struct HomeView: View {
                 .toolbar {
                     Picker("", selection: $viewType) {
                         Image(systemName: "list.bullet")
+                            .tag(ViewType.list)
                         Image(systemName: "square.grid.2x2.fill")
+                            .tag(ViewType.grid)
                     }
                     .pickerStyle(.segmented)
                     .padding([.leading, .trailing])
