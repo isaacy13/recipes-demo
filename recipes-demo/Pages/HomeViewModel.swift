@@ -13,7 +13,10 @@ class HomeViewModel: ObservableObject {
     
     func loadRecipes() async {
         // make sure main thread updates state
-        DispatchQueue.main.async { self.isLoading = true }
+        DispatchQueue.main.async {
+            self.recipes = []
+            self.isLoading = true
+        }
         
         // allow all logic (except for state updates) to be executed in non-main threads
         do {

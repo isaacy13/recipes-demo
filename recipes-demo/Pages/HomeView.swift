@@ -28,8 +28,26 @@ struct HomeView: View {
             if viewModel.isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.black.opacity(0.5))
+                    .background(Color.black)
                     .progressViewStyle(.circular)
+            }
+            
+            if viewModel.recipes.isEmpty {
+                VStack {
+                    Text("Womp womp, no recipes found.")
+                        .font(.largeTitle)
+                        .bold()
+                    Button {
+                        Task { await viewModel.loadRecipes() }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                        Text("Retry")
+                    }
+                    .padding()
+                    .background(Color(UIColor.systemBackground))
+                    .clipShape(.rect(cornerRadius: 15))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
             
             if let recipe = popupRecipe {

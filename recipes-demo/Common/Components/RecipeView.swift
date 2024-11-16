@@ -16,7 +16,7 @@ struct RecipeImageView: View {
         }
         .padding()
         .background(Color(UIColor.systemBackground))
-        .cornerRadius(25)
+        .clipShape(RoundedRectangle(cornerRadius: 25))
         .padding([.leading, .trailing], 15)
         .padding([.top, .bottom], 5)
     }
@@ -48,7 +48,7 @@ struct RecipeImageView: View {
         
         let cuisine = Text(recipe.cuisine)
             .font(.title2)
-            .frame(maxWidth: .infinity, alignment: (orientation == .vertical) ? .trailing : .leading)
+            .frame(alignment: (orientation == .vertical) ? .trailing : .leading)
         
         return VStack {
             if orientation == .vertical {
@@ -106,7 +106,7 @@ struct RecipeImageView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding()
                     .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(15)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
             }
             
@@ -124,7 +124,7 @@ struct RecipeImageView: View {
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(15)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
             }
         }
