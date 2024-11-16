@@ -11,7 +11,7 @@ class HomeViewModel: ObservableObject {
         self.recipes = recipes
     }
     
-    func loadRecipes() async {
+    func loadRecipes(type: RecipeType? = nil) async {
         // make sure main thread updates state
         DispatchQueue.main.async {
             self.recipes = []
@@ -23,16 +23,25 @@ class HomeViewModel: ObservableObject {
             let randomRecipeIndex = Int.random(in: 0..<10)
             let recipeType: RecipeType
             
-            // 0-7 -> get all recipes (80% chance)
-            // 8 -> get malformed recipe file (10% chance)
-            // 9 -> get empty recipe file (10% chance)
-            switch randomRecipeIndex {
-            case 8:
-                recipeType = .malformed
-            case 9:
-                recipeType = .empty
-            default:
-                recipeType = .all
+            // override type used for unit testing
+            if let overrideType = type {
+                recipeType = overrideType
+            }
+            
+            // randomize for UI so that users can see different scenarios without changing code
+            // note: this would not apply in actual code, just for demo purposes
+            else {
+                // 0-7 -> get all recipes (80% chance)
+                // 8 -> get malformed recipe file (10% chance)
+                // 9 -> get empty recipe file (10% chance)
+                switch randomRecipeIndex {
+                case 8:
+                    recipeType = .malformed
+                case 9:
+                    recipeType = .empty
+                default:
+                    recipeType = .all
+                }
             }
             
             let recipeResponse = try await RecipeApi.getRecipes(type: recipeType)

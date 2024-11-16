@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "C00E7F86-9CEB-414B-AF0D-5CA6590B0283",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:recipes-demo.xcodeproj",
+      "identifier" : "96C80D8D2CE2D2DD00C52DE0",
+      "name" : "DEV recipes-demo"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:recipes-demo.xcodeproj",
+        "identifier" : "96C80DA32CE2D2DF00C52DE0",
+        "name" : "recipes-demoTests"
+      }
+    }
+  ],
+  "version" : 1
+}

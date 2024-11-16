@@ -20,19 +20,12 @@
 			remoteGlobalIDString = 96C80D8D2CE2D2DD00C52DE0;
 			remoteInfo = "recipes-demo";
 		};
-		96C80DAF2CE2D2DF00C52DE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 96C80D862CE2D2DD00C52DE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 96C80D8D2CE2D2DD00C52DE0;
-			remoteInfo = "recipes-demo";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		969510D12CE929F100975938 /* DEV recipes-demo.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "DEV recipes-demo.xctestplan"; path = "recipes-demoTests/DEV recipes-demo.xctestplan"; sourceTree = "<group>"; };
 		96C80D8E2CE2D2DD00C52DE0 /* DEV recipes-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEV recipes-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C80DA42CE2D2DF00C52DE0 /* recipes-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "recipes-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		96C80DAE2CE2D2DF00C52DE0 /* recipes-demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "recipes-demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C80DEF2CE2EC3E00C52DE0 /* CERT recipes-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CERT recipes-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C80DF82CE2EC4200C52DE0 /* recipes-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "recipes-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,13 +94,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96C80DAB2CE2D2DF00C52DE0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		96C80DEA2CE2EC3E00C52DE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,6 +116,7 @@
 		96C80D852CE2D2DD00C52DE0 = {
 			isa = PBXGroup;
 			children = (
+				969510D12CE929F100975938 /* DEV recipes-demo.xctestplan */,
 				96C80D902CE2D2DD00C52DE0 /* recipes-demo */,
 				96C80DA72CE2D2DF00C52DE0 /* recipes-demoTests */,
 				96C80D8F2CE2D2DD00C52DE0 /* Products */,
@@ -141,7 +128,6 @@
 			children = (
 				96C80D8E2CE2D2DD00C52DE0 /* DEV recipes-demo.app */,
 				96C80DA42CE2D2DF00C52DE0 /* recipes-demoTests.xctest */,
-				96C80DAE2CE2D2DF00C52DE0 /* recipes-demoUITests.xctest */,
 				96C80DEF2CE2EC3E00C52DE0 /* CERT recipes-demo.app */,
 				96C80DF82CE2EC4200C52DE0 /* recipes-demo.app */,
 			);
@@ -196,26 +182,6 @@
 			productName = "recipes-demoTests";
 			productReference = 96C80DA42CE2D2DF00C52DE0 /* recipes-demoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		96C80DAD2CE2D2DF00C52DE0 /* recipes-demoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 96C80DBE2CE2D2DF00C52DE0 /* Build configuration list for PBXNativeTarget "recipes-demoUITests" */;
-			buildPhases = (
-				96C80DAA2CE2D2DF00C52DE0 /* Sources */,
-				96C80DAB2CE2D2DF00C52DE0 /* Frameworks */,
-				96C80DAC2CE2D2DF00C52DE0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				96C80DB02CE2D2DF00C52DE0 /* PBXTargetDependency */,
-			);
-			name = "recipes-demoUITests";
-			packageProductDependencies = (
-			);
-			productName = "recipes-demoUITests";
-			productReference = 96C80DAE2CE2D2DF00C52DE0 /* recipes-demoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		96C80DE82CE2EC3E00C52DE0 /* CERT recipes-demo */ = {
 			isa = PBXNativeTarget;
@@ -280,10 +246,6 @@
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = 96C80D8D2CE2D2DD00C52DE0;
 					};
-					96C80DAD2CE2D2DF00C52DE0 = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = 96C80D8D2CE2D2DD00C52DE0;
-					};
 				};
 			};
 			buildConfigurationList = 96C80D892CE2D2DD00C52DE0 /* Build configuration list for PBXProject "recipes-demo" */;
@@ -307,7 +269,6 @@
 				96C80DE82CE2EC3E00C52DE0 /* CERT recipes-demo */,
 				96C80DF12CE2EC4200C52DE0 /* recipes-demo */,
 				96C80DA32CE2D2DF00C52DE0 /* recipes-demoTests */,
-				96C80DAD2CE2D2DF00C52DE0 /* recipes-demoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -321,13 +282,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		96C80DA22CE2D2DF00C52DE0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		96C80DAC2CE2D2DF00C52DE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -365,13 +319,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96C80DAA2CE2D2DF00C52DE0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		96C80DE92CE2EC3E00C52DE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,11 +340,6 @@
 			isa = PBXTargetDependency;
 			target = 96C80D8D2CE2D2DD00C52DE0 /* DEV recipes-demo */;
 			targetProxy = 96C80DA52CE2D2DF00C52DE0 /* PBXContainerItemProxy */;
-		};
-		96C80DB02CE2D2DF00C52DE0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 96C80D8D2CE2D2DD00C52DE0 /* DEV recipes-demo */;
-			targetProxy = 96C80DAF2CE2D2DF00C52DE0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -618,7 +560,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/recipes-demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/recipes-demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DEV recipes-demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DEV recipes-demo";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
 			name = Debug;
@@ -641,51 +583,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/recipes-demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/recipes-demo";
-				XROS_DEPLOYMENT_TARGET = 2.1;
-			};
-			name = Release;
-		};
-		96C80DBF2CE2D2DF00C52DE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P56CACJGVV;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "isaacyeang.recipes-demoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = "recipes-demo";
-				XROS_DEPLOYMENT_TARGET = 2.1;
-			};
-			name = Debug;
-		};
-		96C80DC02CE2D2DF00C52DE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P56CACJGVV;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "isaacyeang.recipes-demoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = "recipes-demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DEV recipes-demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DEV recipes-demo";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
 			name = Release;
@@ -884,15 +782,6 @@
 			buildConfigurations = (
 				96C80DBC2CE2D2DF00C52DE0 /* Debug */,
 				96C80DBD2CE2D2DF00C52DE0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		96C80DBE2CE2D2DF00C52DE0 /* Build configuration list for PBXNativeTarget "recipes-demoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				96C80DBF2CE2D2DF00C52DE0 /* Debug */,
-				96C80DC02CE2D2DF00C52DE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
