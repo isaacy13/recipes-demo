@@ -25,6 +25,7 @@ struct RecipeImageView: View {
         VStack {
             title
             imagePreview
+                .padding([.bottom], 10)
             links
         }
     }
@@ -44,7 +45,8 @@ struct RecipeImageView: View {
         let name = Text(recipe.name)
             .font(.title)
             .bold()
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .multilineTextAlignment((orientation == .vertical) ? .leading : .center)
+            .frame(maxWidth: .infinity, alignment: (orientation == .vertical) ? .leading : .center)
         
         let cuisine = Text(recipe.cuisine)
             .font(.title2)
