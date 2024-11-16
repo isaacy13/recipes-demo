@@ -69,7 +69,8 @@ struct RecipeImageView: View {
     
     var imagePreview: some View {
         VStack {
-            if let smallImage = URL(string: recipe.photo_small) {
+            if let recipePhotoUrl = recipe.photo_small,
+               let smallImage = URL(string: recipePhotoUrl) {
                 Button() {
                     onImageClick()
                 } label: {

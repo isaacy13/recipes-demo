@@ -52,10 +52,12 @@ struct HomeView: View {
             
             if let recipe = popupRecipe {
                 VStack {
-                    if let largeImage = URL(string: recipe.photo_large) {
+                    if let largePhotoUrl = recipe.photo_large,
+                       let largeImage = URL(string: largePhotoUrl) {
                         InspectableImageView(imageUrl: largeImage)
                     }
-                    else if let smallImage = URL(string: recipe.photo_small) {
+                    else if let smallPhotoUrl = recipe.photo_small,
+                            let smallImage = URL(string: smallPhotoUrl) {
                         InspectableImageView(imageUrl: smallImage)
                     }
                 }

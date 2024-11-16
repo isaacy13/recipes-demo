@@ -3,8 +3,8 @@ import Foundation
 struct Recipe: Decodable {
     let cuisine: String
     let name: String
-    let photo_large: String
-    let photo_small: String
+    let photo_large: String?
+    let photo_small: String?
     let source_url: String?
     let uuid: UUID
     let youtube_url: String?
