@@ -83,11 +83,6 @@
 			path = "recipes-demoTests";
 			sourceTree = "<group>";
 		};
-		96C80DB12CE2D2DF00C52DE0 /* recipes-demoUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "recipes-demoUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +132,6 @@
 			children = (
 				96C80D902CE2D2DD00C52DE0 /* recipes-demo */,
 				96C80DA72CE2D2DF00C52DE0 /* recipes-demoTests */,
-				96C80DB12CE2D2DF00C52DE0 /* recipes-demoUITests */,
 				96C80D8F2CE2D2DD00C52DE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -215,9 +209,6 @@
 			);
 			dependencies = (
 				96C80DB02CE2D2DF00C52DE0 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				96C80DB12CE2D2DF00C52DE0 /* recipes-demoUITests */,
 			);
 			name = "recipes-demoUITests";
 			packageProductDependencies = (
